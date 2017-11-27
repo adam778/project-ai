@@ -1,14 +1,14 @@
 package com.ai.ai.Database;
 
+import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Clients")
 @Data
+@Builder
 public class Client {
 
     @Id
@@ -41,7 +41,7 @@ public class Client {
         this.email = email;
     }
 
-    public Long getId() {
+    Long getId() {
         return id;
     }
 
