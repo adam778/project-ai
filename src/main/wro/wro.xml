@@ -1,9 +1,13 @@
 <groups xmlns="http://www.isdc.ro/wro">
     <group name="angular-bootstrap">
         <css>webjar:bootstrap/4.0.0-beta.2/css/bootstrap.css</css>
+        <css>webjar:ng-grid/2.0.14/ng-grid.css</css>
+        <css>webjar:nvd3/1.8.5/nv.d3.css</css>
+        <js>file:${project.basedir}/src/main/resources/app/js/app.js</js>
         <js>webjar:jquery/2.1.1/jquery.min.js</js>
         <js>webjar:bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js</js>
         <js>webjar:angularjs/1.6.6/angular.min.js</js>
-        <js>file:${project.basedir}/src/main/resources/app/js/app.js</js>
+        <js>webjar:ng-grid/2.0.14/ng-grid.js</js>
+        <js>webjar:nvd3/1.8.5/nv.d3.js</js>
     </group>
 </groups>
