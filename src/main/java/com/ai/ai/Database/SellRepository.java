@@ -1,6 +1,6 @@
 package com.ai.ai.Database;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SellRepository extends CrudRepository<Sell, Long> {
+public interface SellRepository extends JpaRepository<Sell, Long> {
 }
