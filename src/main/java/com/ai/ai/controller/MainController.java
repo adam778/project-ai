@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/main")
+@RequestMapping(value = "/ss")
 public class MainController {
 
-
     @RequestMapping
-    public void main(){
-
+    public String main(){
+        return "static/index.html";
     }
 }
