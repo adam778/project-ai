@@ -1,4 +1,4 @@
-package com.ai.ai.Database;
+package com.ai.ai.database;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,7 +42,7 @@ public class Client {
         this.email = email;
     }
 
-    Long getId() {
+    public Long getId() {
         return id;
     }
 

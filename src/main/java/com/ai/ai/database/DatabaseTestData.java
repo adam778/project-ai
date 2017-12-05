@@ -1,4 +1,4 @@
-package com.ai.ai.Database;
+package com.ai.ai.database;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,1 +1,1 @@
-var app = angular.module("projectAi", []);
+var app = angular.module("projectAi", ['ngRoute']);

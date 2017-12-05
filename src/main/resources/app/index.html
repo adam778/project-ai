@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link rel="stylesheet" type="text/css" href="../css/angular-bootstrap.css">
-    <script src="../js/angular-bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
 </head>
-<body>
+<body ng-app="projectAi">
 
+<div id="menu">
+    <a ui-sref="main">Main</a>
+    <a ui-sref="client">Client</a>
+</div>
+
+
+<div id="body-div" ng-view="">
+
+</div>
+
+<script src="../js/lib.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 package com.ai.ai;
 
-import com.ai.ai.Database.ClientRepository;
-import com.ai.ai.Database.DatabaseTestData;
-import com.ai.ai.Database.ItemRepository;
-import com.ai.ai.Database.SellRepository;
+import com.ai.ai.database.ClientRepository;
+import com.ai.ai.database.DatabaseTestData;
+import com.ai.ai.database.ItemRepository;
+import com.ai.ai.database.SellRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

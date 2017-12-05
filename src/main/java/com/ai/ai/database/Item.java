@@ -1,4 +1,4 @@
-package com.ai.ai.Database;
+package com.ai.ai.database;
 
 
 import lombok.AllArgsConstructor;
