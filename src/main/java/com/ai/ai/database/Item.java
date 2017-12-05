@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class Item {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,9 @@ class Item {
         this.name = name;
     }
 
-    Long getId() {
+    public Long getId() {
         return id;
     }
+
+
 }

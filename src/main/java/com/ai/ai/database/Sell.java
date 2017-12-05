@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class Sell {
+public class Sell {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
