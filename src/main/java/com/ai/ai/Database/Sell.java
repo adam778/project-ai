@@ -1,8 +1,10 @@
 package com.ai.ai.Database;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +12,8 @@ import javax.persistence.*;
 @Data
 @Table(name = "Sells")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 class Sell {
 
     @Id
@@ -21,9 +25,6 @@ class Sell {
     int amount;
 
     String sellDate;
-
-    public Sell() {
-    }
 
     Sell(Long customerId, Long itemId, int amount, String sellDate) {
         this.customerId = customerId;

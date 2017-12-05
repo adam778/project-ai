@@ -1,8 +1,10 @@
 package com.ai.ai.Database;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +12,8 @@ import javax.persistence.*;
 @Data
 @Table(name = "Items")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 class Item {
 
     @Id
@@ -18,8 +22,6 @@ class Item {
 
     String name;
 
-    public Item() {
-    }
 
     Item(String name) {
         this.name = name;
