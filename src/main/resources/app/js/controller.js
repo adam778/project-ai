@@ -1,13 +1,13 @@
-app.controller('clientCtrl', ['$scope', clientCtrl]);
+app.controller('clientCtrl', ['$scope', 'clientService', clientCtrl]);
 app.controller('sellsCtrl', ['$scope', sellsCtrl]);
 
-function clientCtrl($scope) {
+function clientCtrl($scope, clientService) {
 
-    $scope.myData = [{name: "Moroni", age: 50},
-        {name: "Teancum", age: 43},
-        {name: "Jacob", age: 27},
-        {name: "Nephi", age: 29},
-        {name: "Enos", age: 34}];
+    clientService.GetAll().then(function (data) {
+        console.log(data);
+        $scope.myData = data;
+    });
+
     $scope.myOptions = {
         enableSorting: true,
         enableCellEditOnFocus: true,

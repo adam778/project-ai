@@ -15,6 +15,7 @@
         <css>webjar:nvd3/1.8.5/nv.d3.css</css>
         <js>/resources/app/js/app.js</js>
         <js>/resources/app/js/controller.js</js>
+        <js>/resources/app/js/service.js</js>
         <js>/resources/app/js/router.config.js</js>
     </group>
 </groups>
