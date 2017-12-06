@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Builder
 @Getter
@@ -14,7 +13,6 @@ import javax.validation.constraints.NotNull;
 public class ClientDto {
     //Zakładam, że klient zawsze ma imię i nazwisko a nazwa firmy jest opcjonalna.
 
-    @NotNull(message = "Client id can't be null")
     Long id;
 
     @NotBlank(message = "Client name can't be empty")
