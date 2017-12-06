@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <base href="/">
     <link rel="stylesheet" type="text/css" href="../css/app.css">
 </head>
 <body ng-app="projectAi">
 
-<div id="menu">
-    <a ui-sref="main">Main</a>
-    <a ui-sref="client">Client</a>
-</div>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <p> CRM </p>
+    <div class="" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" ui-sref="main">Home</a>
+            <a class="nav-item nav-link" ui-sref="client">Client</a>
+            <a class="nav-item nav-link" ui-sref="sells">Sells</a>
+            <a class="nav-item nav-link" ui-sref="visualisation">Visualisation</a>
+        </div>
+    </div>
+</nav>
 
 
-<div id="body-div" ng-view="">
 
+<div id="body-div" class="container">
+    <div ui-view></div>
 </div>
 
 <script src="../js/lib.js"></script>
