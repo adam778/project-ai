@@ -1,11 +1,14 @@
-app.config(function($stateProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state("main", {
             url:'/',
-            templateUrl : "main.html"
+            templateUrl : "template/main.html",
+            controller: 'simpleController'
         })
         .state("client", {
-            url:'   /client',
-            templateUrl : "../html/client.html"
-        })
+            url:'/client',
+            templateUrl : "template/client.html",
+            controller: 'clientCtrl'
+        });
+   // $urlRouterProvider.otherwise("/");
 });

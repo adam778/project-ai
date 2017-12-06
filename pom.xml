@@ -74,9 +74,14 @@
             <version>4.0.0-beta.2</version>
         </dependency>
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>ng-grid</artifactId>
-            <version>2.0.14</version>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-ui-grid</artifactId>
+            <version>4.0.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>1.12.5</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -89,9 +94,9 @@
             <version>3.0.2</version>
         </dependency>
         <dependency>
-            <groupId>org.webjars.npm</groupId>
-            <artifactId>angular-route</artifactId>
-            <version>1.6.6</version>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-ui-router</artifactId>
+            <version>1.0.11</version>
         </dependency>
 
         <!--Dependency dla walidatora-->
@@ -137,17 +142,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
                         <!-- Serves *only* to filter the wro.xml so it can get an absolute
                           path for the project -->
                         <id>copy-resources</id>
-                        <phase>validate</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -178,9 +179,9 @@
                 <configuration>
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory
                     </wroManagerFactory>
-                    <cssDestinationFolder>${project.build.directory}/generated-resources/static/css
+                    <cssDestinationFolder>${basedir}/src/main/resources/static/css
                     </cssDestinationFolder>
-                    <jsDestinationFolder>${project.build.directory}/generated-resources/static/js</jsDestinationFolder>
+                    <jsDestinationFolder>${basedir}/src/main/resources/static/js</jsDestinationFolder>
                     <wroFile>${basedir}/src/main/wro/wro.xml</wroFile>
                     <extraConfigFile>${basedir}/src/main/wro/wro.properties</extraConfigFile>
                     <contextFolder>${basedir}/src/main</contextFolder>
@@ -198,7 +199,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-resources/static/</outputDirectory>
+                            <outputDirectory>${basedir}/src/main/resources/static/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>src/main/resources/app/</directory>

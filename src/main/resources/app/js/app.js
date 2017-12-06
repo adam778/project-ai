@@ -1,1 +1,1 @@
-var app = angular.module("projectAi", ['ngRoute']);
+var app = angular.module("projectAi", ['ui.router', 'ui.grid']);
