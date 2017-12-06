@@ -13,7 +13,6 @@ import javax.validation.constraints.Positive;
 @Getter
 @Setter
 public class SellDto {
-    @NotNull(message = "Sell id can't be null")
     Long id;
     @NotNull(message = "Sell customerId can't be null")
     Long customerId;

@@ -26,7 +26,32 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public List<ClientDto> findAll() {
         return clientRepository.findAll().stream()
-                .map(client-> clientConverter.convertToDto(client))
+                .map(client -> clientConverter.convertToDto(client))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ClientDto findOne(Long clientId) {
+        return clientConverter.convertToDto(clientRepository.findOne(clientId));
+    }
+
+    @Override
+    public void deleteAll() {
+        clientRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteOne(Long clientId) {
+        clientRepository.delete(clientId);
+    }
+
+    @Override
+    public void save(ClientDto clientDto) {
+        clientRepository.save(clientConverter.convertToEntity(clientDto));
+    }
+
+    @Override
+    public void insert(ClientDto clientDto) {
+        clientRepository.save(clientConverter.convertToEntity(clientDto));
     }
 }

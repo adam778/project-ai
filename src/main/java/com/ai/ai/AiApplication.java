@@ -28,6 +28,6 @@ public class AiApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         DatabaseTestData.loadTestData(this.clientRepository, this.itemRepository, this.sellRepository);
-        // DatabaseTestData.showTestData(this.clientRepository, this.itemRepository, this.sellRepository);
+        //DatabaseTestData.showTestData(this.clientRepository, this.itemRepository, this.sellRepository);
     }
 }
