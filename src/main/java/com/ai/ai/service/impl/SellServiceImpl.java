@@ -1,6 +1,7 @@
 package com.ai.ai.service.impl;
 
 import com.ai.ai.converter.SellConventer;
+import com.ai.ai.database.Sell;
 import com.ai.ai.database.SellRepository;
 import com.ai.ai.dto.SellDto;
 import com.ai.ai.service.SellService;
@@ -28,4 +29,35 @@ public class SellServiceImpl implements SellService {
                 .map(sell -> sellConventer.convertToDto(sell))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public SellDto findOne(Long sellId) {
+        return sellConventer.convertToDto(sellRepository.findOne(sellId));
+    }
+
+    @Override
+    public void deleteAll() {
+        sellRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteOne(Long sellId) {
+        sellRepository.delete(sellId);
+    }
+
+    @Override
+    public SellDto save(SellDto sellDto) {
+        sellRepository.save(sellConventer.convertToEntity(sellDto));
+        return sellDto;
+    }
+
+    @Override
+    public SellDto insert(SellDto sellDto) {
+        Sell newSell = sellRepository.save(sellConventer.convertToEntity(sellDto));
+        return sellConventer.convertToDto(newSell);
+
+    }
+
+
+
 }
