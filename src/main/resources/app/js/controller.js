@@ -85,7 +85,7 @@ function visualisationCtrl($scope) {
 
 
 
-    $scope.myOptions = {
+    $scope.options = {
         "chart": {
             "type": "lineChart",
             "height": 450,
