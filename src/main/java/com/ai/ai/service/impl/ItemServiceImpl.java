@@ -1,6 +1,7 @@
 package com.ai.ai.service.impl;
 
 import com.ai.ai.converter.ItemConventer;
+import com.ai.ai.database.Item;
 import com.ai.ai.database.ItemRepository;
 import com.ai.ai.dto.ItemDto;
 import com.ai.ai.service.ItemService;
@@ -22,7 +23,6 @@ public class ItemServiceImpl implements ItemService {
         this.itemConventer = itemConventer;
     }
 
-
     @Override
     public List<ItemDto> findAll() {
         return this.itemRepository.findAll().stream()
@@ -30,4 +30,34 @@ public class ItemServiceImpl implements ItemService {
                 .collect(Collectors.toList());
 
     }
+
+    @Override
+    public ItemDto findOne(Long itemId) {
+        return itemConventer.convertToDto(itemRepository.findOne(itemId));
+    }
+
+    @Override
+    public void deleteAll() {
+        itemRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteOne(Long itemId) {
+        itemRepository.delete(itemId);
+    }
+
+    @Override
+    public ItemDto save(ItemDto itemDto) {
+        itemRepository.save(itemConventer.convertToEntity(itemDto));
+        return itemDto;
+    }
+
+    @Override
+    public ItemDto insert(ItemDto itemDto) {
+        Item newSell = itemRepository.save(itemConventer.convertToEntity(itemDto));
+        return itemConventer.convertToDto(newSell);
+
+    }
+
+
 }
