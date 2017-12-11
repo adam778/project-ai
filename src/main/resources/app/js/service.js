@@ -26,7 +26,7 @@ app.factory('clientService', function($http){
 app.factory('sellService', function($http){
     return {
         GetAll: function() {
-            return $http.get('/sell').then(extractSuccessResponse);
+            return $http.get('/sell/').then(extractSuccessResponse);
         },
         GetOne: function(id) {
             return $http.get('/sell/:id', id).then(extractSuccessResponse);

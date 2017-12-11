@@ -1,6 +1,6 @@
 app.controller('clientCtrl', ['$scope', 'clientService', clientCtrl]);
-app.controller('sellCtrl', ['$scope', sellCtrl]);
-app.controller('visualisationCtrl', ['$scope', visualisationCtrl]);
+app.controller('sellCtrl', ['$scope', 'sellService', sellCtrl]);
+app.controller('visualisationCtrl', ['$scope', 'sellService', visualisationCtrl]);
 
 function clientCtrl($scope, clientService) {
 
@@ -23,30 +23,26 @@ function clientCtrl($scope, clientService) {
         data: 'myData' };
 }
 
-function sellCtrl($scope) {
+function sellCtrl($scope, sellService) {
 
-    $scope.myData = [{name: "Moroni", age: 50},
-        {name: "Teancum", age: 43},
-        {name: "Jacob", age: 27},
-        {name: "Nephi", age: 29},
-        {name: "Enos", age: 34}];
+    sellService.GetAll().then(function (data) {
+        $scope.myData = data;
+    });
+
     $scope.myOptions = {
         enableSorting: true,
         enableCellEditOnFocus: true,
         minRowsToShow: 5,
         columnDefs: [
-            { name: 'name', displayName:"Name" },
-            { name: 'surname', displayName:"Surname" },
-            { name: 'companyName', displayName:"Company name" },
-            { name: 'adress', displayName:"Address" },
-            { name: 'phone', displayName:"Phone" },
-            { name: 'email', displayName:"Email" }
+            { name: 'customerId', displayName:"Customer" },
+            { name: 'itemId', displayName:"Item" },
+            { name: 'amount', displayName:"Amount" },
         ],
         data: 'myData' };
 }
 
 
-function visualisationCtrl($scope) {
+function visualisationCtrl($scope, sellService) {
 
     $scope.data = sinAndCos();
 
