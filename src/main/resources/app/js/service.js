@@ -1,9 +1,9 @@
-app.factory('clientService', function($http){
+app.factory('clientService', function ($http) {
     return {
-        GetAll: function() {
+        GetAll: function () {
             return $http.get('/client/').then(extractSuccessResponse);
         },
-        GetOne: function(id) {
+        GetOne: function (id) {
             return $http.get('/client/:id', id).then(extractSuccessResponse);
         },
         Save: function (client) {
@@ -23,12 +23,12 @@ app.factory('clientService', function($http){
 });
 
 
-app.factory('sellService', function($http){
+app.factory('sellService', function ($http) {
     return {
-        GetAll: function() {
-            return $http.get('/sell').then(extractSuccessResponse);
+        GetAll: function () {
+            return $http.get('/sell/').then(extractSuccessResponse);
         },
-        GetOne: function(id) {
+        GetOne: function (id) {
             return $http.get('/sell/:id', id).then(extractSuccessResponse);
         },
         Save: function (client) {
@@ -43,6 +43,13 @@ app.factory('sellService', function($http){
         },
         Delete: function (id) {
             return $http.delete('/sell/:id', id).then(extractSuccessResponse);
+        },
+        SendFile: function (fd) {
+            return $http.post('/sell/parse', fd, {
+                headers: {'Content-Type': undefined},
+                transformRequest: angular.identity
+            }).then(extractSuccessResponse)
+
         }
     };
 });

@@ -16,8 +16,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         })
         .state("visualisation", {
             url:'/visualisation',
-            templateUrl : "template/visualisation.html",
-            controller: 'visualisationCtrl'
+            templateUrl : "template/visualisation.html"
         });
     $urlRouterProvider.otherwise("/");
 });

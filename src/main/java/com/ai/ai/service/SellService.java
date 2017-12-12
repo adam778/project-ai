@@ -1,6 +1,7 @@
 package com.ai.ai.service;
 
 import com.ai.ai.dto.SellDto;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface SellService {
     SellDto save(SellDto sellDto);
 
     SellDto insert(SellDto sellDto);
+
+    void uploadAndParseFile(MultipartFile uploadedFile);
 
 }

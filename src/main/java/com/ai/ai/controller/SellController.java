@@ -5,6 +5,7 @@ import com.ai.ai.dto.SellDto;
 import com.ai.ai.service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -55,5 +56,10 @@ public class SellController {
         return sellService.insert(sellDto);
     }
 
+
+    @RequestMapping(value = "/parse", method = RequestMethod.POST)
+    public void uploadAndParseFile(@RequestParam("file") MultipartFile uploadedFile) {
+        sellService.uploadAndParseFile(uploadedFile);
+    }
 
 }
