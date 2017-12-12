@@ -29,6 +29,14 @@ function sellCtrl($scope, sellService) {
         $scope.myData = data;
     });
 
+    $scope.uploadFile = function(files) {
+        var fd = new FormData();
+        //Take the first selected file
+        fd.append("file", files[0]);
+
+        sellService.SendFile(fd);
+    };
+
     $scope.myOptions = {
         enableSorting: true,
         enableCellEditOnFocus: true,

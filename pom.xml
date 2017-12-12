@@ -135,6 +135,11 @@
             <artifactId>javax.el</artifactId>
             <version>2.2.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.3</version>
+        </dependency>
     </dependencies>
 
     <build>
