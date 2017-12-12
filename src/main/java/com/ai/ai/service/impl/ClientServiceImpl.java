@@ -47,9 +47,17 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDto save(ClientDto clientDto) {
-        clientRepository.save(clientConverter.convertToEntity(clientDto));
-        return clientDto;
+    public ClientDto update(long clientId, ClientDto newClient) {
+        ClientDto currentClient = clientConverter.convertToDto(clientRepository.findOne(clientId));
+        currentClient.setAdress(newClient.getAdress());
+        currentClient.setCompanyName(newClient.getCompanyName());
+        currentClient.setEmail(newClient.getEmail());
+        currentClient.setName(newClient.getName());
+        currentClient.setPhone(newClient.getPhone());
+        currentClient.setSurname(newClient.getSurname());
+
+        clientRepository.save(clientConverter.convertToEntity(currentClient));
+        return currentClient;
     }
 
     @Override

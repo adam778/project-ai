@@ -41,13 +41,7 @@ public class SellController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     SellDto updateOne(@PathVariable(value = "id") Long sellId, @RequestBody SellDto sell) {
-        SellDto currentSell = sellService.findOne(sellId);
-        currentSell.setAmount(sell.getAmount());
-        currentSell.setCustomerId(sell.getCustomerId());
-        currentSell.setItemId(sell.getItemId());
-        currentSell.setSellDate(sell.getSellDate());
-
-        return sellService.save(currentSell);
+        return sellService.update(sellId, sell);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

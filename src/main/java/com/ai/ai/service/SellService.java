@@ -14,7 +14,7 @@ public interface SellService {
 
     void deleteOne(Long sellId);
 
-    SellDto save(SellDto sellDto);
+    SellDto update(long sellId, SellDto sellDto);
 
     SellDto insert(SellDto sellDto);
 

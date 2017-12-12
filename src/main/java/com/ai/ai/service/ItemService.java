@@ -14,7 +14,7 @@ public interface ItemService {
 
     void deleteOne(Long itemId);
 
-    ItemDto save(ItemDto itemDto);
+    ItemDto update(long itemId, ItemDto newItem);
 
     ItemDto insert(ItemDto itemDto);
 }
