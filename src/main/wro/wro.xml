@@ -15,6 +15,7 @@
         <css>webjar:bootstrap/4.0.0-beta.2/css/bootstrap.css</css>
         <css>webjar:angular-ui-grid/4.0.10/ui-grid.css</css>
         <css>webjar:nvd3/1.8.2/nv.d3.css</css>
+        <css>/resources/app/css/my.css</css>
         <js>/resources/app/js/app.js</js>
         <js>/resources/app/js/controller.js</js>
         <js>/resources/app/js/service.js</js>

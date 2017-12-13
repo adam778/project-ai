@@ -30,7 +30,7 @@ public class DatabaseTestData {
 
         for (Client c : clientRepository.findAll()) {
             for (Item i : itemRepository.findAll()) {
-                sellRepository.save(new Sell(c.getId(), i.getId(), r.nextInt(10), dateS));
+                sellRepository.save(new Sell(c.getId(), i.getId(), r.nextInt(1000), dateS));
             }
         }
     }
