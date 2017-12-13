@@ -8,6 +8,17 @@ function clientCtrl($scope, clientService) {
         $scope.myData = data;
     });
 
+
+    $scope.selected = {};
+
+    $scope.save = function (newSell) {
+        clientService.Save(newSell).then(
+            clientService.GetAll().then(function (data) {
+                $scope.myData = data;
+            })
+        )
+    };
+
     $scope.myOptions = {
         enableSorting: true,
         enableCellEditOnFocus: true,
@@ -25,6 +36,15 @@ function clientCtrl($scope, clientService) {
 
 function sellCtrl($scope, sellService) {
 
+    $scope.selected = {};
+    
+    $scope.save = function (newSell) {
+        sellService.Save(newSell).then(
+            sellService.GetAll().then(function (data) {
+                $scope.myData = data;
+            })
+        )
+    };
     sellService.GetAll().then(function (data) {
         $scope.myData = data;
     });

@@ -9,10 +9,10 @@ app.factory('clientService', function ($http) {
         Save: function (client) {
             if (client) {
                 if (client.id) {
-                    return $http.post('/client/', client).then(extractSuccessResponse);
+                    return $http.put('/client/:id', client.id, client).then(extractSuccessResponse);
                 }
                 else {
-                    return $http.put('/client/', client).then(extractSuccessResponse);
+                    return $http.post('/client/', client).then(extractSuccessResponse);
                 }
             }
         },
@@ -34,10 +34,10 @@ app.factory('sellService', function ($http) {
         Save: function (client) {
             if (client) {
                 if (client.id) {
-                    return $http.post('/sell/', client).then(extractSuccessResponse);
+                    return $http.put('/sell/:id', client.id, client).then(extractSuccessResponse);
                 }
                 else {
-                    return $http.put('/sell/', client).then(extractSuccessResponse);
+                    return $http.post('/sell/', client).then(extractSuccessResponse);
                 }
             }
         },

@@ -1,7 +1,24 @@
 <div id="client-grid">
-    <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
-    <a target="_blank" href="sell/export" class="btn">Export</a>
+    <div class="row">
+        <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+        <a target="_blank" href="sell/export" class="btn">Export</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <span class="col-4"><label>Customer id </label></span> <input type="text" ng-model="selected.customerId">
+        </div>
+        <div class="row">
+            <span class="col-4"><label>Item id </label></span><input type="text" ng-model="selected.itemId">
+        </div>
+        <div class="row">
+            <span class="col-4"><label>Amount </label></span><input type="text" ng-model="selected.amount">
+        </div>
+        <div class="row">
+            <button ng-click="save(selected)">Save</button>
+        </div>
+    </div>
+
     <div ui-grid="myOptions" ui-grid-auto-resize>
 
- </div>
+    </div>
 </div>
