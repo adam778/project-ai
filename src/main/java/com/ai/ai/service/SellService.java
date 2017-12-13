@@ -3,6 +3,8 @@ package com.ai.ai.service;
 import com.ai.ai.dto.SellDto;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public interface SellService {
@@ -19,6 +21,8 @@ public interface SellService {
 
     SellDto insert(SellDto sellDto);
 
-    void uploadAndParseFile(MultipartFile uploadedFile);
+    void importCsv(MultipartFile uploadedFile);
+
+    File exportCsv() throws IOException;
 
 }

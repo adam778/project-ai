@@ -4,9 +4,12 @@ package com.ai.ai.controller;
 import com.ai.ai.dto.SellDto;
 import com.ai.ai.service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -59,7 +62,15 @@ public class SellController {
 
     @RequestMapping(value = "/parse", method = RequestMethod.POST)
     public void uploadAndParseFile(@RequestParam("file") MultipartFile uploadedFile) {
-        sellService.uploadAndParseFile(uploadedFile);
+        sellService.importCsv(uploadedFile);
     }
+
+    @RequestMapping(value = "/export", method = RequestMethod.GET, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody
+    public FileSystemResource export() throws IOException {
+        return new FileSystemResource(sellService.exportCsv());
+    }
+
+
 
 }
