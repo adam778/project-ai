@@ -8,22 +8,26 @@
 </head>
 <body ng-app="projectAi">
 
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <p> CRM </p>
-    <div class="" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" ui-sref="main">Home</a>
-            <a class="nav-item nav-link" ui-sref="client">Client</a>
-            <a class="nav-item nav-link" ui-sref="sell">Sells</a>
-            <a class="nav-item nav-link" ui-sref="visualisation">Visualisation</a>
+<div id="body-div" class="centered-content card container">
+    <div class="row">
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                <p> CRM </p>
+                <div class="" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" ui-sref="main">Home</a>
+                        <a class="nav-item nav-link" ui-sref="client">Client</a>
+                        <a class="nav-item nav-link" ui-sref="sell">Sells</a>
+                        <a class="nav-item nav-link" ui-sref="visualisation">Visualisation</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <div ui-view></div>
         </div>
     </div>
-</nav>
-
-
-
-<div id="body-div" class="container">
-    <div ui-view></div>
 </div>
 
 <script src="../js/lib.js"></script>

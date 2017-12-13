@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -103,5 +104,11 @@ public class SellServiceImpl implements SellService {
         csvWriter.close();
 
         return export;
+    }
+
+    @Override
+    public Map<Long, Integer> getDataForChart() {
+         return sellRepository.findAll().stream()
+                .collect(Collectors.groupingBy(Sell::getCustomerId, Collectors.summingInt(Sell::getAmount)));
     }
 }

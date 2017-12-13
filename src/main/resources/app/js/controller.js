@@ -34,7 +34,11 @@ function sellCtrl($scope, sellService) {
         //Take the first selected file
         fd.append("file", files[0]);
 
-        sellService.SendFile(fd);
+        sellService.SendFile(fd).then(function () {
+            sellService.GetAll().then(function (data) {
+                $scope.myData = data;
+            });
+        });
     };
 
     $scope.myOptions = {
@@ -52,16 +56,44 @@ function sellCtrl($scope, sellService) {
 
 function visualisationCtrl($scope, sellService) {
 
-    $scope.data = [];
+    $scope.data = [
+        {
+            key: "Selles" ,
+            values: [
+                { "label" : "A" , "value" : -29.765957771107 },
+                { "label" : "B" , "value" : 0 },
+                { "label" : "C" , "value" : 32.807804682612 },
+                { "label" : "D" , "value" : 196.45946739256 },
+                { "label" : "E" , "value" : 0.19434030906893 },
+                { "label" : "F" , "value" : -98.079782601442 },
+                { "label" : "G" , "value" : -13.925743130903 },
+                { "label" : "H" , "value" : -5.1387322875705 }
+            ]
+        }
+    ];
 
-    sellService.GetAll().then(function (data) {
-        $scope.data = data;
-        console.log($scope.data);
+    function prepareDataForChart(data) {
+        var result = {
+            key: "Selles",
+            values: []
+        };
+        for (index in data) {
+            result.values.push({
+                    "label": index,
+                    "value": data[index]
+                }
+            )
+        }
+        return [result];
+    }
+
+    sellService.GetDataForChart().then(function (data) {
+        $scope.data = prepareDataForChart(data);
     });
 
     $scope.options = {
         "chart": {
-            "type": "lineChart",
+            "type": "discreteBarChart",
             "height": 450,
             "margin": {
                 "top": 20,
@@ -70,10 +102,10 @@ function visualisationCtrl($scope, sellService) {
                 "left": 55
             },
             x: function (d) {
-                return d.customerId;
+                return d.label;
             },
             y: function (d) {
-                return d.amount;
+                return d.value;
             },
             "dispatch": {},
             "xAxis": {

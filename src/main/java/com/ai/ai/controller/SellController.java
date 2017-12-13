@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/sell")
@@ -71,6 +72,11 @@ public class SellController {
         return new FileSystemResource(sellService.exportCsv());
     }
 
+    @RequestMapping(value = "/chartData", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<Long, Integer> getDataForChart() throws IOException {
+        return sellService.getDataForChart();
+    }
 
 
 }

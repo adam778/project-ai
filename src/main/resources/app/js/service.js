@@ -50,7 +50,10 @@ app.factory('sellService', function ($http) {
                 transformRequest: angular.identity
             }).then(extractSuccessResponse)
 
-        }
+        },
+        GetDataForChart: function () {
+            return $http.get('/sell/chartData').then(extractSuccessResponse);
+        },
     };
 });
 

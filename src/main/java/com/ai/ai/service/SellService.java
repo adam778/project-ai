@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public interface SellService {
 
@@ -24,5 +25,7 @@ public interface SellService {
     void importCsv(MultipartFile uploadedFile);
 
     File exportCsv() throws IOException;
+
+    Map<Long, Integer> getDataForChart();
 
 }
