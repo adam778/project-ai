@@ -5,6 +5,9 @@
     </div>
     <div class="container">
         <div class="row">
+            <span class="col-4"><label>Id </label></span> <label>{{selected.id}}</label>
+        </div>
+        <div class="row">
             <span class="col-4"><label>Customer id </label></span> <input type="text" ng-model="selected.customerId">
         </div>
         <div class="row">
@@ -14,11 +17,13 @@
             <span class="col-4"><label>Amount </label></span><input type="text" ng-model="selected.amount">
         </div>
         <div class="row">
+            <button ng-click="selected={}">New</button>
             <button ng-click="save(selected)">Save</button>
+            <button ng-click="delete(selected)">Delete</button>
         </div>
     </div>
 
-    <div ui-grid="myOptions" ui-grid-auto-resize>
+    <div ui-grid="myOptions" ui-grid-selection ui-grid-auto-resize>
 
     </div>
 </div>

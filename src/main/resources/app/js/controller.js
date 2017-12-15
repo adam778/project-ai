@@ -4,25 +4,33 @@ app.controller('visualisationCtrl', ['$scope', 'sellService', visualisationCtrl]
 
 function clientCtrl($scope, clientService) {
 
-    clientService.GetAll().then(function (data) {
-        $scope.myData = data;
-    });
-
-
     $scope.selected = {};
 
+
+    function refreshGrid() {
+        clientService.GetAll().then(function (data) {
+            $scope.myData = data;
+            $scope.selected = {};
+        });
+    }
+
+    refreshGrid();
+
     $scope.save = function (newSell) {
-        clientService.Save(newSell).then(
-            clientService.GetAll().then(function (data) {
-                $scope.myData = data;
-            })
-        )
+        clientService.Save(newSell).then(refreshGrid)
+    };
+
+    $scope.delete = function (row) {
+        if (row && row.id) {
+            clientService.Delete(row.id).then(refreshGrid);
+        }
     };
 
     $scope.myOptions = {
         enableSorting: true,
         enableCellEditOnFocus: true,
         minRowsToShow: 5,
+        multiSelect: false,
         columnDefs: [
             { name: 'name', displayName:"Name" },
             { name: 'surname', displayName:"Surname" },
@@ -32,19 +40,37 @@ function clientCtrl($scope, clientService) {
             { name: 'email', displayName:"Email" }
             ],
         data: 'myData' };
+
+    $scope.myOptions.onRegisterApi = function(gridApi){
+        //set gridApi on scope
+        $scope.gridApi = gridApi;
+        gridApi.selection.on.rowSelectionChanged($scope,function(row){
+            $scope.selected = row.entity;
+        });
+    };
 }
 
 function sellCtrl($scope, sellService) {
 
     $scope.selected = {};
-    
+
+    function refreshGrid() {
+        sellService.GetAll().then(function (data) {
+            $scope.selected = {};
+            $scope.myData = data;
+        });
+    }
+
     $scope.save = function (newSell) {
-        sellService.Save(newSell).then(
-            sellService.GetAll().then(function (data) {
-                $scope.myData = data;
-            })
-        )
+        sellService.Save(newSell).then(refreshGrid)
     };
+
+    $scope.delete = function (row) {
+        if (row && row.id) {
+          sellService.Delete(row.id).then(refreshGrid);
+        }
+    };
+
     sellService.GetAll().then(function (data) {
         $scope.myData = data;
     });
@@ -65,12 +91,22 @@ function sellCtrl($scope, sellService) {
         enableSorting: true,
         enableCellEditOnFocus: true,
         minRowsToShow: 5,
+        multiSelect:false,
         columnDefs: [
             { name: 'customerId', displayName:"Customer" },
             { name: 'itemId', displayName:"Item" },
             { name: 'amount', displayName:"Amount" },
         ],
         data: 'myData' };
+
+    $scope.myOptions.onRegisterApi = function(gridApi){
+        //set gridApi on scope
+        $scope.gridApi = gridApi;
+        gridApi.selection.on.rowSelectionChanged($scope,function(row){
+            console.log("Row:", row);
+            $scope.selected = row.entity;
+        });
+    };
 }
 
 
