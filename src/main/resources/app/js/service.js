@@ -4,12 +4,12 @@ app.factory('clientService', function ($http) {
             return $http.get('/client/').then(extractSuccessResponse);
         },
         GetOne: function (id) {
-            return $http.get('/client/:id', id).then(extractSuccessResponse);
+            return $http.get('/client/' + id, id).then(extractSuccessResponse);
         },
         Save: function (client) {
             if (client) {
                 if (client.id) {
-                    return $http.put('/client/:id', client.id, client).then(extractSuccessResponse);
+                    return $http.put('/client/' + client.id, client).then(extractSuccessResponse);
                 }
                 else {
                     return $http.post('/client/', client).then(extractSuccessResponse);
@@ -17,7 +17,7 @@ app.factory('clientService', function ($http) {
             }
         },
         Delete: function (id) {
-            return $http.delete('/client/:id', id).then(extractSuccessResponse);
+            return $http.delete('/client/' + id).then(extractSuccessResponse);
         }
     };
 });
@@ -29,12 +29,12 @@ app.factory('sellService', function ($http) {
             return $http.get('/sell/').then(extractSuccessResponse);
         },
         GetOne: function (id) {
-            return $http.get('/sell/:id', id).then(extractSuccessResponse);
+            return $http.get('/sell/' + id).then(extractSuccessResponse);
         },
         Save: function (client) {
             if (client) {
                 if (client.id) {
-                    return $http.put('/sell/:id', client.id, client).then(extractSuccessResponse);
+                    return $http.put('/sell/' + client.id, client).then(extractSuccessResponse);
                 }
                 else {
                     return $http.post('/sell/', client).then(extractSuccessResponse);
@@ -42,7 +42,7 @@ app.factory('sellService', function ($http) {
             }
         },
         Delete: function (id) {
-            return $http.delete('/sell/:id', id).then(extractSuccessResponse);
+            return $http.delete('/sell/' + id).then(extractSuccessResponse);
         },
         SendFile: function (fd) {
             return $http.post('/sell/parse', fd, {
