@@ -14,7 +14,7 @@ public interface ClientService {
 
     void deleteOne(Long clientId);
 
-    ClientDto save(ClientDto clientDto);
+    ClientDto update(long clientId, ClientDto newClient);
 
     ClientDto insert(ClientDto clientDto);
 

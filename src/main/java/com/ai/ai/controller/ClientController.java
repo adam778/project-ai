@@ -40,15 +40,7 @@ public class ClientController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     ClientDto updateOne(@PathVariable(value = "id") Long clientId, @RequestBody ClientDto client) {
-        ClientDto currentClient = clientService.findOne(clientId);
-        currentClient.setAdress(client.getAdress());
-        currentClient.setCompanyName(client.getCompanyName());
-        currentClient.setEmail(client.getEmail());
-        currentClient.setName(client.getName());
-        currentClient.setPhone(client.getPhone());
-        currentClient.setSurname(client.getSurname());
-
-        return clientService.save(currentClient);
+        return clientService.update(clientId, client);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

@@ -54,9 +54,15 @@ public class SellServiceImpl implements SellService {
     }
 
     @Override
-    public SellDto save(SellDto sellDto) {
-        sellRepository.save(sellConventer.convertToEntity(sellDto));
-        return sellDto;
+    public SellDto update(long sellId, SellDto sellDto) {
+        SellDto currentSell = sellConventer.convertToDto(sellRepository.findOne(sellId));
+        currentSell.setAmount(sellDto.getAmount());
+        currentSell.setCustomerId(sellDto.getCustomerId());
+        currentSell.setItemId(sellDto.getItemId());
+        currentSell.setSellDate(sellDto.getSellDate());
+
+        sellRepository.save(sellConventer.convertToEntity(currentSell));
+        return currentSell;
     }
 
     @Override

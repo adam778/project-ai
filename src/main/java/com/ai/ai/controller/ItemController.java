@@ -41,10 +41,7 @@ public class ItemController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     ItemDto updateOne(@PathVariable(value = "id") Long itemId, @RequestBody ItemDto item) {
-        ItemDto currentItem = itemService.findOne(itemId);
-        currentItem.setName(item.getName());
-
-        return itemService.save(currentItem);
+        return itemService.update(itemId, item);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

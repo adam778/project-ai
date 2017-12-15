@@ -47,9 +47,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ItemDto save(ItemDto itemDto) {
-        itemRepository.save(itemConventer.convertToEntity(itemDto));
-        return itemDto;
+    public ItemDto update(long itemId, ItemDto newItem) {
+        ItemDto currentItem = itemConventer.convertToDto(itemRepository.findOne(itemId));
+        currentItem.setName(newItem.getName());
+        itemRepository.save(itemConventer.convertToEntity(currentItem));
+        return currentItem;
     }
 
     @Override
