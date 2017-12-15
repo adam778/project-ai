@@ -3,25 +3,31 @@
         <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
         <a target="_blank" href="sell/export" class="btn">Export</a>
     </div>
-    <div class="container">
+    <form name="form" class="container" novalidate>
         <div class="row">
             <span class="col-4"><label>Id </label></span> <label>{{selected.id}}</label>
         </div>
         <div class="row">
-            <span class="col-4"><label>Customer id </label></span> <input type="text" ng-model="selected.customerId">
+            <span class="col-4"><label>Customer id </label></span> <input type="text" name="customerId" ng-model="selected.customerId" ng-required="required" integer>
+            <span ng-show="form.customerId.$error.integer">The value is not a valid integer!</span><br>
+            <span ng-show="form.customerId.$error.required">Field can't be empty</span>
         </div>
         <div class="row">
-            <span class="col-4"><label>Item id </label></span><input type="text" ng-model="selected.itemId">
+            <span class="col-4"><label>Item id </label></span><input type="text" name="itemId" ng-model="selected.itemId" ng-required="required" integer>
+            <span ng-show="form.itemId.$error.integer">The value is not a valid integer!</span><br>
+            <span ng-show="form.itemId.$error.required">Field can't be empty</span>
         </div>
         <div class="row">
-            <span class="col-4"><label>Amount </label></span><input type="text" ng-model="selected.amount">
+            <span class="col-4"><label>Amount </label></span><input type="text" name="amount" ng-model="selected.amount" ng-required="required" integer>
+            <span ng-show="form.amount.$error.integer">The value is not a valid integer!</span><br>
+            <span ng-show="form.amount.$error.required">Field can't be empty</span>
         </div>
         <div class="row">
             <button ng-click="selected={}">New</button>
-            <button ng-click="save(selected)">Save</button>
-            <button ng-click="delete(selected)">Delete</button>
+            <button ng-disabled="!form.$valid" ng-click="form.$valid && save(selected)">Save</button>
+            <button ng-disabled="!form.$valid" ng-click="form.$valid && delete(selected)">Delete</button>
         </div>
-    </div>
+    </form>
 
     <div ui-grid="myOptions" ui-grid-selection ui-grid-auto-resize>
 

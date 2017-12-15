@@ -53,6 +53,7 @@ function clientCtrl($scope, clientService) {
 function sellCtrl($scope, sellService) {
 
     $scope.selected = {};
+    $scope.required = true;
 
     function refreshGrid() {
         sellService.GetAll().then(function (data) {
